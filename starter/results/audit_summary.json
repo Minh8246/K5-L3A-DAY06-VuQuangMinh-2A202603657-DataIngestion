@@ -1,47 +1,52 @@
 {
   "A": {
-    "coherence_mean_of_2": null,
-    "coherence_n": 0,
-    "coherence_missing": 10,
-    "metadata_all_correct": "0/0",
-    "metadata_missing": 15,
-    "metadata_errors": [],
+    "coherence_mean_of_2": 0.9,
+    "coherence_n": 10,
+    "coherence_missing": 0,
+    "metadata_all_correct": "11/15",
+    "metadata_missing": 0,
+    "metadata_errors": [
+      "q18 #2 qd43-2007:p19:A:002: Chunk trộn đuôi Điều 28 với đầu 'Chương V ... Điều 29' nhưng article chỉ ghi 'Điều 28'; nội dung bằng chứng (thi hộ) thuộc Điều 29.",
+      "q19 #3 tt08-2021:p05:A:003: Chunk chứa đuôi Điều 3 và đầu 'Điều 4. Hình thức đào tạo' nhưng article chỉ ghi 'Điều 3'.",
+      "q20 #2 tt08-2021:p18:A:003: Chunk chứa đuôi Điều 17 và đầu 'Điều 18. Học cùng lúc hai chương trình' nhưng article chỉ ghi 'Điều 17'.",
+      "q20 #3 tt08-2021:p18:A:001: Chunk chứa đuôi Điều 16 và đầu 'Điều 17. Trao đổi sinh viên' nhưng article chỉ ghi 'Điều 16'; nội dung quan trọng thuộc Điều 17."
+    ],
     "grounding_counts": {
       "0": 0,
-      "1": 0,
-      "2": 0
+      "1": 2,
+      "2": 3
     },
-    "grounding_mean_of_2": null,
-    "grounding_missing": 5
+    "grounding_mean_of_2": 1.6,
+    "grounding_missing": 0
   },
   "B": {
-    "coherence_mean_of_2": null,
-    "coherence_n": 0,
-    "coherence_missing": 10,
-    "metadata_all_correct": "0/0",
-    "metadata_missing": 15,
+    "coherence_mean_of_2": 1.8,
+    "coherence_n": 10,
+    "coherence_missing": 0,
+    "metadata_all_correct": "15/15",
+    "metadata_missing": 0,
     "metadata_errors": [],
     "grounding_counts": {
-      "0": 0,
+      "0": 1,
       "1": 0,
-      "2": 0
+      "2": 4
     },
-    "grounding_mean_of_2": null,
-    "grounding_missing": 5
+    "grounding_mean_of_2": 1.6,
+    "grounding_missing": 0
   },
   "C": {
-    "coherence_mean_of_2": null,
-    "coherence_n": 0,
-    "coherence_missing": 10,
-    "metadata_all_correct": "0/0",
-    "metadata_missing": 15,
+    "coherence_mean_of_2": 1.8,
+    "coherence_n": 10,
+    "coherence_missing": 0,
+    "metadata_all_correct": "15/15",
+    "metadata_missing": 0,
     "metadata_errors": [],
     "grounding_counts": {
       "0": 0,
       "1": 0,
-      "2": 0
+      "2": 5
     },
-    "grounding_mean_of_2": null,
-    "grounding_missing": 5
+    "grounding_mean_of_2": 2.0,
+    "grounding_missing": 0
   }
 }

@@ -20,6 +20,7 @@
 > python -m src.run --split test                     # chỉ sau khi chốt cấu hình -> results/traces_test.jsonl
 > python scripts/make_audit_sheets.py                # tạo bảng chấm tay results/audit_*.csv
 > python scripts/summarize_audit.py                  # tổng hợp nhãn tay -> results/audit_summary.json
+> python scripts/verify_metadata_audit.py            # đối chiếu nhãn metadata với text thô của PDF (không cần API)
 > python scripts/view_chunks.py                      # (tùy chọn) xem A/B cạnh nhau: results/chunks_view.html
 > ```
 >
