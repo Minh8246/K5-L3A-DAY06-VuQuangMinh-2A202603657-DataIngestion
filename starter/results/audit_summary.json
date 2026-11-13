@@ -1,0 +1,47 @@
+{
+  "A": {
+    "coherence_mean_of_2": null,
+    "coherence_n": 0,
+    "coherence_missing": 10,
+    "metadata_all_correct": "0/0",
+    "metadata_missing": 15,
+    "metadata_errors": [],
+    "grounding_counts": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "grounding_mean_of_2": null,
+    "grounding_missing": 5
+  },
+  "B": {
+    "coherence_mean_of_2": null,
+    "coherence_n": 0,
+    "coherence_missing": 10,
+    "metadata_all_correct": "0/0",
+    "metadata_missing": 15,
+    "metadata_errors": [],
+    "grounding_counts": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "grounding_mean_of_2": null,
+    "grounding_missing": 5
+  },
+  "C": {
+    "coherence_mean_of_2": null,
+    "coherence_n": 0,
+    "coherence_missing": 10,
+    "metadata_all_correct": "0/0",
+    "metadata_missing": 15,
+    "metadata_errors": [],
+    "grounding_counts": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "grounding_mean_of_2": null,
+    "grounding_missing": 5
+  }
+}

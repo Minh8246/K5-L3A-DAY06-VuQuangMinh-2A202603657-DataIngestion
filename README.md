@@ -2,6 +2,29 @@
 
 **Lab cá nhân** · **4 giờ** · **Dữ liệu tự chọn**
 
+> ## Bài làm: corpus quy chế đào tạo đại học (QĐ43/2007 và TT08/2021)
+>
+> **Corpus:** 2 PDF văn bản quy phạm, 42 trang vật lý, 40 trang nội dung (2 trang scan không OCR). Xem [starter/data/manifest.csv](starter/data/manifest.csv).
+> **Embedding:** Gemini `gemini-embedding-001`, 768 chiều (API, cần `GEMINI_API_KEY` trong `starter/.env`). **Store:** PostgreSQL 16 + pgvector 0.8.7, cosine, exact search.
+> **Chiến lược:** A = cố định 500/50 · B = theo Điều/khoản/điểm, tối đa 800 · C = B + filter `issued_year`. Chi tiết: [artifacts/experiment_log.csv](artifacts/experiment_log.csv).
+>
+> **Tái lập** (từ `starter/`, sau khi làm bước 1 của [starter/README.md](starter/README.md); cần mạng để gọi Gemini):
+>
+> ```bash
+> python -m pip install -r requirements.txt          # gồm google-genai
+> python scripts/build_manifest.py                   # đo PDF -> data/manifest*.csv
+> python ../benchmark/verify_benchmark.py            # kiểm evidence của 20 câu hỏi
+> python scripts/build_chunks.py                     # đọc, chuẩn hóa, log trang -> results/chunks_A|B.jsonl
+> python scripts/index_chunks.py                     # embed + upsert pgvector (chạy lại = 0 request, không trùng)
+> python -m src.run --split dev                      # A/B/C trên 15 câu dev -> results/traces_dev.jsonl
+> python -m src.run --split test                     # chỉ sau khi chốt cấu hình -> results/traces_test.jsonl
+> python scripts/make_audit_sheets.py                # tạo bảng chấm tay results/audit_*.csv
+> python scripts/summarize_audit.py                  # tổng hợp nhãn tay -> results/audit_summary.json
+> python scripts/view_chunks.py                      # (tùy chọn) xem A/B cạnh nhau: results/chunks_view.html
+> ```
+>
+> **Vị trí bài nộp:** code `starter/src/`, `starter/scripts/` · benchmark `benchmark/` · manifest `starter/data/` · kết quả, trace, nhãn tay `starter/results/` · nhật ký `artifacts/experiment_log.csv` · báo cáo `report/individual/`.
+
 Biến tài liệu thành kho tri thức có thể truy xuất cho AI agent, rồi đo xem cách chuẩn bị dữ liệu nào hiệu quả nhất.
 
 | 📄 Dữ liệu | 🧩 Chiến lược | 🎯 Benchmark |

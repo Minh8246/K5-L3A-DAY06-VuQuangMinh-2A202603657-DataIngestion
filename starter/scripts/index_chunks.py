@@ -13,6 +13,7 @@ import json
 import os
 import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -66,8 +67,12 @@ def main() -> None:
               f"{len(chunks) - len(todo)}, deleted {deleted} | rows in DB {rows} | {seconds:.1f}s")
 
     log["api_usage"] = embedder.usage
+    log["run_at"] = datetime.now().astimezone().isoformat(timespec="seconds")
     (RESULTS / "index_log.json").write_text(json.dumps(log, ensure_ascii=False, indent=2),
                                             encoding="utf-8")
+    # Keep every run: the first (full embedding) and later no-op reloads are both evidence.
+    with open(RESULTS / "index_runs.jsonl", "a", encoding="utf-8") as f:
+        f.write(json.dumps(log, ensure_ascii=False) + "\n")
     print(f"API usage: {embedder.usage}")
 
     print(f"\nDemo query: {DEMO_QUESTION}")
