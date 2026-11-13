@@ -1,0 +1,30 @@
+{
+  "ingest_seconds": 1.16,
+  "content_pages": 40,
+  "params": {
+    "A": {
+      "size": 500,
+      "overlap": 50
+    },
+    "B": {
+      "max_size": 800,
+      "with_header": true
+    }
+  },
+  "A": {
+    "chunks": 178,
+    "total_chars": 80420,
+    "min": 62,
+    "median": 499.0,
+    "mean": 451.8,
+    "max": 500
+  },
+  "B": {
+    "chunks": 148,
+    "total_chars": 77853,
+    "min": 62,
+    "median": 546.5,
+    "mean": 526.0,
+    "max": 800
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "embedding_model": "gemini-embedding-001",
+  "dimensions": 768,
+  "distance": "cosine",
+  "search": "exact (no ANN index)",
+  "strategies": {
+    "A": {
+      "chunks": 178,
+      "embedded": 0,
+      "skipped_unchanged": 178,
+      "deleted_obsolete": 0,
+      "rows_in_db": 178,
+      "seconds": 0.01
+    },
+    "B": {
+      "chunks": 148,
+      "embedded": 0,
+      "skipped_unchanged": 148,
+      "deleted_obsolete": 0,
+      "rows_in_db": 148,
+      "seconds": 0.01
+    }
+  },
+  "api_usage": {
+    "requests": 0,
+    "texts": 0,
+    "chars": 0,
+    "retries": 0
+  }
+}
