@@ -45,9 +45,9 @@ Thời gian là tổng thời gian tìm kiếm pgvector top-3 cho cả split, ch
 
 | Strategy | Coherence trung bình /2 (n) | Metadata đủ và đúng (n/N) | Filter tuân thủ (n/N hoặc N/A) | Grounding 0/1/2 (số câu) và trung bình /2 |
 |---|---|---|---|---|
-| A | 0,90 (10) | 11/15 | 0/2 (không dùng filter) | 0/2/3 → 1,6 |
-| B | 1,80 (10) | 15/15 | 0/2 (không dùng filter) | 1/0/4 → 1,6 |
-| C | 1,80 (10; dùng chunk của B) | 15/15 | 2/2 | 0/0/5 → 2,0 |
+| A | 1,00 (10) | 11/15 | 0/2 (không dùng filter) | 0/1/4 → 1,8 |
+| B | 1,90 (10) | 15/15 | 0/2 (không dùng filter) | 1/0/4 → 1,6 |
+| C | 1,90 (10; dùng chunk của B) | 15/15 | 2/2 | 0/0/5 → 2,0 |
 
 Filter tính trên 2 câu filter của test (q16, q17): top-3 toàn đúng năm hay không. Trên dev, 5 câu filter: A 0/5, B 0/5, C 5/5 ([metrics_dev.json](../../starter/results/metrics_dev.json)).
 
@@ -59,7 +59,7 @@ Filter tính trên 2 câu filter của test (q16, q17): top-3 toàn đúng năm 
 
 ## Phân tích và kết luận
 
-- **A–B (đổi cách chia chunk):** Hit@3 dev 11/15 → 15/15, Hit@1 8/15 → 13/15; coherence 0,90 → 1,80; metadata đúng 11/15 → 15/15; chunk 178 → 148. 4 câu dev trượt ở A dù trang gold có trong top-3 (q03, q07, q09, q12) vì evidence bị cắt giữa hai chunk. Chunk A hay cắt giữa từ/số ("dưới 1|,20") và trộn đuôi Điều trước với đầu Điều sau nên `article` chỉ ghi Điều đầu (4/15 bản ghi sai ở test). Nhưng **trên test B không hơn A ở Hit@1** (2/5 so với 3/5) và grounding trung bình bằng nhau (1,6): n=5 quá nhỏ, chênh 1 câu.
+- **A–B (đổi cách chia chunk):** Hit@3 dev 11/15 → 15/15, Hit@1 8/15 → 13/15; coherence 1,00 → 1,90; metadata đúng 11/15 → 15/15; chunk 178 → 148. 4 câu dev trượt ở A dù trang gold có trong top-3 (q03, q07, q09, q12) vì evidence bị cắt giữa hai chunk. Chunk A hay cắt giữa từ/số ("dưới 1|,20") và trộn đuôi Điều trước với đầu Điều sau nên `article` chỉ ghi Điều đầu (4/15 bản ghi sai ở test). Nhưng **trên test B không hơn A ở Hit@1** (2/5 so với 3/5) và grounding trung bình của B (1,6) còn thấp hơn A (1,8), vì ở q17 B không lọc năm nên chỉ lấy được chunk sai phiên bản (grounding 0) trong khi A vẫn có một chunk đúng văn bản (grounding 1): n=5 quá nhỏ, chênh 1 câu.
 - **B–C (chỉ thêm filter `issued_year`):** Hit@1 dev 13/15 → 14/15, test Hit@3 4/5 → 5/5; filter tuân thủ 0/5 → 5/5 (dev), 0/2 → 2/2 (test); grounding 1,6 → 2,0. Tài nguyên không đổi (cùng 148 chunk). Lợi ích đến từ đúng 1 câu mỗi split (q05 dev, q17 test), không đủ để kết luận về mức độ.
 - **Hai ví dụ sai:**
   1. **q17 (test, filter 2021, đáp án `tt08-2021` trang 19, Điều 18):** B không lọc nên top-1/2 là Điều 17 của QĐ43 (bản 2007, ngưỡng "dưới 2,00"), tức sai phiên bản; Hit@3 = 0 và grounding = 0. C lọc năm 2021 đưa trang 19 vào top-2 (Hit@3 đạt) nhưng Hit@1 vẫn 0 vì top-1 là chunk khoản 4-5 cùng Điều 18, không chứa điều kiện ở khoản 3. Filter sửa nhầm phiên bản chứ không sửa xếp hạng trong cùng văn bản.
